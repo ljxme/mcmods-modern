@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "browser-extension-builder": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/browser-extension-builder/SKILL.md",
+      "computedHash": "32722e8533b335a9a262593d060e5dbd716fa0799f8d543928e6e7e27496e024"
+    },
+    "extension-analyze": {
+      "source": "quangpl/browser-extension-skills",
+      "sourceType": "github",
+      "skillPath": "skills/extension-analyze/SKILL.md",
+      "computedHash": "206f2d80185294d5ebef49998795a360ac3423ce8dc938f6ec44b81668c951ac"
+    },
+    "extension-ui": {
+      "source": "quangpl/browser-extension-skills",
+      "sourceType": "github",
+      "skillPath": "skills/extension-ui/SKILL.md",
+      "computedHash": "dc508ba6f8e731964b57993da8b5c31215c5ada62fda08eba7b1b99b52ff232e"
+    },
+    "wxt-browser-extensions": {
+      "source": "pproenca/dot-skills",
+      "sourceType": "github",
+      "skillPath": "skills/.experimental/wxt-browser-extensions/SKILL.md",
+      "computedHash": "3cb5453d026a8a223bc3d788bd5ddb0dae230a39508ae002a66cbce67a8f0e96"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+/* ============================================
+ * mcmods-modern — Modals / Dialogs
+ * 弹窗 / 对话框 → 终端窗口风格
+ *
+ * MCMod 目标选择器（待确认后调整）：
+ *   .modal, .dialog, .popup, [role="dialog"]
+ * ============================================ */
+
+/* ── 遮罩层 ── */
+.modal-backdrop,
+[class*="modal-backdrop"],
+[class*="overlay"] {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* ── 弹窗主体 ── */
+.modal,
+.dialog,
+[class*="modal"],
+[class*="dialog"],
+[role="dialog"] {
+  background-color: var(--mcmods-bg-primary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-lg);
+  box-shadow: var(--mcmods-shadow-md);
+  overflow: hidden;
+}
+
+/* ── 弹窗标题栏 ── */
+.modal-header,
+.dialog-header,
+[class*="modal-header"],
+[class*="modal-title"] {
+  background-color: var(--mcmods-bg-secondary);
+  border-bottom: var(--mcmods-border-subtle);
+  padding: var(--mcmods-space-3) var(--mcmods-space-4);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 600;
+  color: var(--mcmods-fg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 伪标题栏窗口按钮 */
+.modal-header::before,
+.dialog-header::before {
+  content: '● ● ●';
+  color: var(--mcmods-fg-muted);
+  font-size: 8px;
+  letter-spacing: 6px;
+}
+
+/* ── 弹窗内容 ── */
+.modal-body,
+.dialog-body,
+[class*="modal-body"] {
+  padding: var(--mcmods-space-4);
+  color: var(--mcmods-fg-secondary);
+}
+
+/* ── 弹窗底部 ── */
+.modal-footer,
+.dialog-footer,
+[class*="modal-footer"] {
+  background-color: var(--mcmods-bg-secondary);
+  border-top: var(--mcmods-border-subtle);
+  padding: var(--mcmods-space-3) var(--mcmods-space-4);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--mcmods-space-2);
+}
+
+/* ── 关闭按钮 ── */
+.modal-close,
+.dialog-close,
+[class*="modal-close"],
+[class*="close"],
+[aria-label*="close"],
+[aria-label*="关闭"] {
+  color: var(--mcmods-fg-muted) !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  font-size: var(--mcmods-font-size-lg);
+  padding: var(--mcmods-space-1);
+  border-radius: var(--mcmods-radius-sm);
+  transition: color var(--mcmods-transition-fast),
+              background-color var(--mcmods-transition-fast);
+}
+
+.modal-close:hover,
+.dialog-close:hover,
+[class*="modal-close"]:hover,
+[class*="close"]:hover {
+  color: var(--mcmods-accent-red) !important;
+  background-color: rgba(248, 81, 73, 0.12) !important;
+}

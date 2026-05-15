@@ -1,0 +1,86 @@
+/* ============================================
+ * mcmods-modern — Cards / Panels
+ * 卡片 / 面板 → 终端窗口风格（伪标题栏 + 细边框）
+ *
+ * MCMod 目标选择器（待确认后调整）：
+ *   .card, .panel, .box, .mod-card, .item-card
+ * ============================================ */
+
+/* ── 卡片容器 ── */
+.card,
+.panel,
+[class*="card"],
+[class*="mod-card"],
+[class*="item-card"],
+[class*="panel"] {
+  background-color: var(--mcmods-bg-tertiary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-lg);
+  box-shadow: var(--mcmods-shadow-sm);
+  overflow: hidden;
+  transition: border-color var(--mcmods-transition-base),
+              box-shadow var(--mcmods-transition-base);
+}
+
+.card:hover,
+.panel:hover,
+[class*="card"]:hover,
+[class*="panel"]:hover {
+  border-color: var(--mcmods-accent-blue) !important;
+  box-shadow: var(--mcmods-shadow-glow);
+}
+
+/* ── 卡片标题 / 伪标题栏 ── */
+.card-header,
+.panel-header,
+[class*="card-title"],
+[class*="panel-title"],
+.card > :first-child:is(h2, h3, h4),
+.panel > :first-child:is(h2, h3, h4) {
+  background-color: var(--mcmods-bg-secondary);
+  border-bottom: var(--mcmods-border-subtle);
+  padding: var(--mcmods-space-2) var(--mcmods-space-4);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 600;
+  color: var(--mcmods-fg-primary);
+  letter-spacing: 0.5px;
+}
+
+/* 伪标题栏装饰点（模拟终端窗口按钮） */
+.card-header::before,
+.panel-header::before {
+  content: '● ● ●';
+  color: var(--mcmods-fg-muted);
+  font-size: 8px;
+  letter-spacing: 6px;
+  margin-right: var(--mcmods-space-2);
+  vertical-align: middle;
+}
+
+/* ── 卡片内容区 ── */
+.card-body,
+.panel-body,
+.card-content,
+.panel-content {
+  padding: var(--mcmods-space-4);
+  color: var(--mcmods-fg-secondary);
+}
+
+/* ── 卡片图片 ── */
+.card img,
+.panel img,
+[class*="card"] img,
+[class*="panel"] img {
+  border-radius: var(--mcmods-radius-sm);
+}
+
+/* ── 卡片底部 ── */
+.card-footer,
+.panel-footer {
+  background-color: var(--mcmods-bg-secondary);
+  border-top: var(--mcmods-border-subtle);
+  padding: var(--mcmods-space-2) var(--mcmods-space-4);
+  font-size: var(--mcmods-font-size-xs);
+  color: var(--mcmods-fg-muted);
+}

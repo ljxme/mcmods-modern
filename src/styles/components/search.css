@@ -1,0 +1,96 @@
+/* ============================================
+ * mcmods-modern — Search
+ * 搜索框 / 搜索区域 → 终端风格
+ *
+ * MCMod 目标选择器（待确认后调整）：
+ *   .search, .search-box, #search, input[type="search"]
+ * ============================================ */
+
+/* ── 搜索容器 ── */
+.search-box,
+.search-wrapper,
+[class*="search-box"],
+[class*="search-wrapper"] {
+  display: flex;
+  align-items: center;
+  gap: var(--mcmods-space-2);
+}
+
+/* ── 搜索输入框 ── */
+input[type="search"],
+.search-input,
+[class*="search-input"],
+[class*="search"] input[type="text"] {
+  background-color: var(--mcmods-bg-secondary) !important;
+  color: var(--mcmods-fg-primary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-md);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-sm);
+  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+  transition: border-color var(--mcmods-transition-fast),
+              box-shadow var(--mcmods-transition-fast);
+  outline: none;
+}
+
+input[type="search"]:focus,
+.search-input:focus,
+[class*="search"] input[type="text"]:focus {
+  border-color: var(--mcmods-accent-blue) !important;
+  box-shadow: var(--mcmods-shadow-glow);
+}
+
+input[type="search"]::placeholder,
+.search-input::placeholder {
+  color: var(--mcmods-fg-muted);
+}
+
+/* ── 搜索按钮 ── */
+.search-btn,
+[class*="search-btn"],
+.search-box button,
+.search-wrapper button {
+  background-color: var(--mcmods-accent-blue) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: var(--mcmods-radius-md);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-sm);
+  padding: var(--mcmods-space-2) var(--mcmods-space-4);
+  cursor: pointer;
+  transition: background-color var(--mcmods-transition-fast);
+}
+
+.search-btn:hover,
+[class*="search-btn"]:hover,
+.search-box button:hover {
+  background-color: #4090e0 !important;
+}
+
+/* ── 搜索建议 / 下拉 ── */
+.search-suggestions,
+.search-dropdown,
+[class*="search-suggest"],
+[class*="search-dropdown"] {
+  background-color: var(--mcmods-bg-tertiary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-md);
+  box-shadow: var(--mcmods-shadow-md);
+  overflow: hidden;
+}
+
+.search-suggestions li,
+.search-dropdown li,
+[class*="search-suggest"] li {
+  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+  color: var(--mcmods-fg-secondary);
+  cursor: pointer;
+  font-size: var(--mcmods-font-size-sm);
+  transition: background-color var(--mcmods-transition-fast);
+}
+
+.search-suggestions li:hover,
+.search-dropdown li:hover {
+  background-color: var(--mcmods-hover-bg);
+  color: var(--mcmods-fg-primary);
+}

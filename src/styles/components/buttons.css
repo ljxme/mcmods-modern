@@ -1,0 +1,118 @@
+/* ============================================
+ * mcmods-modern — Buttons
+ * 按钮 / 交互元素 → 终端风格（悬停半透明叠加 + 光标动画）
+ *
+ * MCMod 目标选择器（待确认后调整）：
+ *   button, .btn, [type="button"], [type="submit"]
+ * ============================================ */
+
+/* ── 通用按钮 ── */
+button,
+.btn,
+[type="button"],
+[type="submit"],
+[role="button"],
+[class*="btn"],
+[class*="button"] {
+  background-color: var(--mcmods-bg-tertiary) !important;
+  color: var(--mcmods-fg-primary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-md);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  padding: var(--mcmods-space-2) var(--mcmods-space-4);
+  transition: background-color var(--mcmods-transition-fast),
+              border-color var(--mcmods-transition-fast),
+              color var(--mcmods-transition-fast),
+              box-shadow var(--mcmods-transition-fast);
+  outline: none;
+}
+
+button:hover,
+.btn:hover,
+[type="button"]:hover,
+[type="submit"]:hover,
+[role="button"]:hover {
+  background-color: var(--mcmods-hover-bg) !important;
+  border-color: var(--mcmods-accent-blue) !important;
+  box-shadow: var(--mcmods-shadow-glow);
+}
+
+button:active,
+.btn:active,
+[type="button"]:active,
+[type="submit"]:active {
+  background-color: var(--mcmods-active-bg) !important;
+}
+
+button:focus-visible,
+.btn:focus-visible {
+  border-color: var(--mcmods-accent-blue) !important;
+  box-shadow: 0 0 0 2px var(--mcmods-accent-blue);
+}
+
+/* ── 主要按钮（CTA） ── */
+.btn-primary,
+[class*="btn-primary"],
+[class*="btn--primary"] {
+  background-color: var(--mcmods-accent-blue) !important;
+  color: #ffffff !important;
+  border-color: var(--mcmods-accent-blue) !important;
+}
+
+.btn-primary:hover {
+  background-color: #4090e0 !important;
+}
+
+/* ── 危险按钮 ── */
+.btn-danger,
+[class*="btn-danger"],
+[class*="btn--danger"] {
+  background-color: transparent !important;
+  border-color: var(--mcmods-accent-red) !important;
+  color: var(--mcmods-accent-red) !important;
+}
+
+.btn-danger:hover {
+  background-color: rgba(248, 81, 73, 0.12) !important;
+}
+
+/* ── 幽灵 / 文字按钮 ── */
+.btn-ghost,
+.btn-link,
+[class*="btn-ghost"],
+[class*="btn-link"] {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--mcmods-accent-blue) !important;
+}
+
+.btn-ghost:hover,
+.btn-link:hover {
+  background-color: var(--mcmods-hover-bg) !important;
+  border-color: transparent !important;
+}
+
+/* ── 按钮尺寸变体 ── */
+.btn-sm,
+[class*="btn-sm"] {
+  font-size: var(--mcmods-font-size-xs);
+  padding: var(--mcmods-space-1) var(--mcmods-space-2);
+}
+
+.btn-lg,
+[class*="btn-lg"] {
+  font-size: var(--mcmods-font-size-lg);
+  padding: var(--mcmods-space-3) var(--mcmods-space-5);
+}
+
+/* ── 禁用态 ── */
+button:disabled,
+.btn:disabled,
+[class*="btn"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}

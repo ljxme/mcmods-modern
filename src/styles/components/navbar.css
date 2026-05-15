@@ -1,0 +1,87 @@
+/* ============================================
+ * mcmods-modern — Navbar
+ * 顶部导航栏 → 终端风格重绘
+ *
+ * MCMod 目标选择器（待确认后调整）：
+ *   .navbar, header, .header, .nav, #nav
+ * ============================================ */
+
+/* ── 导航容器 ── */
+header,
+.navbar,
+.header-wrapper,
+[class*="navbar"],
+[id*="navbar"] {
+  background-color: var(--mcmods-bg-secondary) !important;
+  border-bottom: var(--mcmods-border-default) !important;
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ── 导航链接 ── */
+header a,
+.navbar a,
+.header-wrapper a {
+  color: var(--mcmods-fg-secondary) !important;
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-sm);
+  text-decoration: none;
+  transition: color var(--mcmods-transition-fast),
+              background-color var(--mcmods-transition-fast);
+  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+  border-radius: var(--mcmods-radius-sm);
+}
+
+header a:hover,
+.navbar a:hover,
+.header-wrapper a:hover {
+  color: var(--mcmods-accent-blue) !important;
+  background-color: var(--mcmods-hover-bg);
+  text-decoration: none;
+}
+
+/* ── Logo / 品牌 ── */
+header .logo,
+.navbar .logo,
+.header-wrapper .logo,
+header [class*="logo"],
+.navbar [class*="logo"] {
+  color: var(--mcmods-accent-green) !important;
+  font-family: var(--mcmods-font-mono);
+  font-weight: 700;
+  font-size: var(--mcmods-font-size-lg);
+}
+
+/* ── 导航激活项 ── */
+header .active,
+.navbar .active,
+.header-wrapper .active,
+header [class*="active"],
+.navbar [class*="active"] {
+  color: var(--mcmods-fg-primary) !important;
+  background-color: var(--mcmods-active-bg);
+  border-bottom: 2px solid var(--mcmods-accent-blue);
+}
+
+/* ── 搜索框（导航栏内嵌） ── */
+header input[type="text"],
+header input[type="search"],
+.navbar input[type="text"],
+.navbar input[type="search"] {
+  background-color: var(--mcmods-bg-primary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  padding: var(--mcmods-space-1) var(--mcmods-space-3);
+}
+
+header input[type="text"]:focus,
+header input[type="search"]:focus,
+.navbar input[type="text"]:focus,
+.navbar input[type="search"]:focus {
+  border-color: var(--mcmods-accent-blue);
+  box-shadow: var(--mcmods-shadow-glow);
+}
