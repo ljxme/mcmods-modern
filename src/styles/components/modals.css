@@ -1,6 +1,6 @@
 /* ============================================
  * mcmods-modern — Modals / Dialogs
- * 弹窗 / 对话框 → 终端窗口风格
+ * Vercel 风格弹窗 — 简洁遮罩 + 圆角面板
  *
  * MCMod 目标选择器（待确认后调整）：
  *   .modal, .dialog, .popup, [role="dialog"]
@@ -11,19 +11,19 @@
 [class*="modal-backdrop"],
 [class*="overlay"] {
   background-color: rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
 }
 
-/* ── 弹窗主体 ── */
+/* ── 弹窗主体（Geist modal） ── */
 .modal,
 .dialog,
 [class*="modal"],
 [class*="dialog"],
 [role="dialog"] {
-  background-color: var(--mcmods-bg-primary) !important;
+  background-color: var(--mcmods-bg-secondary) !important;
   border: var(--mcmods-border-default) !important;
-  border-radius: var(--mcmods-radius-lg);
-  box-shadow: var(--mcmods-shadow-md);
+  border-radius: var(--mcmods-radius-lg) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6) !important;
   overflow: hidden;
 }
 
@@ -32,25 +32,17 @@
 .dialog-header,
 [class*="modal-header"],
 [class*="modal-title"] {
-  background-color: var(--mcmods-bg-secondary);
+  background-color: transparent;
   border-bottom: var(--mcmods-border-subtle);
-  padding: var(--mcmods-space-3) var(--mcmods-space-4);
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-sm);
-  font-weight: 600;
+  padding: var(--mcmods-space-4) var(--mcmods-space-4) var(--mcmods-space-3);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-base);
+  font-weight: 500;
   color: var(--mcmods-fg-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-/* 伪标题栏窗口按钮 */
-.modal-header::before,
-.dialog-header::before {
-  content: '● ● ●';
-  color: var(--mcmods-fg-muted);
-  font-size: 8px;
-  letter-spacing: 6px;
+  letter-spacing: -0.01em;
 }
 
 /* ── 弹窗内容 ── */
@@ -65,7 +57,6 @@
 .modal-footer,
 .dialog-footer,
 [class*="modal-footer"] {
-  background-color: var(--mcmods-bg-secondary);
   border-top: var(--mcmods-border-subtle);
   padding: var(--mcmods-space-3) var(--mcmods-space-4);
   display: flex;
@@ -95,6 +86,6 @@
 .dialog-close:hover,
 [class*="modal-close"]:hover,
 [class*="close"]:hover {
-  color: var(--mcmods-accent-red) !important;
-  background-color: rgba(248, 81, 73, 0.12) !important;
+  color: var(--mcmods-fg-primary) !important;
+  background-color: var(--mcmods-bg-hover) !important;
 }

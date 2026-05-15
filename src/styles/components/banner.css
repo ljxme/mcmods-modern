@@ -1,0 +1,110 @@
+/* ============================================
+ * mcmods-modern — Banner & Category Nav
+ * MCMod 真实目标：.banner / .m_menu / .nav .t1-.t7
+ * ============================================ */
+
+/* ── 横幅容器 ── */
+.banner {
+  background-color: var(--mcmods-bg-primary) !important;
+}
+
+/* ── 菜单层 ── */
+.banner .frame {
+  background-color: transparent;
+}
+
+.banner .frame-in {
+  background-color: transparent;
+}
+
+/* ── 装饰文字 ── */
+.ooops .text,
+.ooops .shadow {
+  color: var(--mcmods-fg-secondary) !important;
+}
+
+/* ── 时间显示 ── */
+.nowTime {
+  color: var(--mcmods-fg-muted);
+  font-family: var(--mcmods-font-mono);
+}
+
+/* ── 中央菜单 ── */
+.m_menu {
+  background-color: var(--mcmods-bg-secondary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
+}
+
+.m_menu .m_center li a {
+  color: var(--mcmods-fg-secondary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  transition: color var(--mcmods-transition-fast);
+}
+
+.m_menu .m_center li a:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+/* ── 分类导航栏 ── */
+.main .nav {
+  background-color: var(--mcmods-bg-secondary);
+  border-bottom: var(--mcmods-border-default);
+}
+
+.main .nav ul {
+  border-bottom: none;
+}
+
+/* ── 分类标签 (t1-t7, t23, t24) ── */
+.main .nav li {
+  color: var(--mcmods-fg-secondary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--mcmods-transition-fast),
+              background-color var(--mcmods-transition-fast);
+  border-radius: var(--mcmods-radius-sm);
+}
+
+.main .nav li:hover {
+  color: var(--mcmods-accent-blue);
+  background-color: var(--mcmods-bg-hover);
+}
+
+.main .nav li.on,
+.main .nav li.active {
+  color: var(--mcmods-accent-blue) !important;
+}
+
+/* ── 拼写/版本检索区域 ── */
+.category {
+  color: var(--mcmods-fg-secondary);
+}
+
+.pyaz {
+  font-family: var(--mcmods-font-mono);
+  color: var(--mcmods-fg-muted);
+}
+
+/* ── 版本检索弹出区 ── */
+#switch_az,
+#switch_py {
+  background-color: var(--mcmods-bg-secondary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
+  color: var(--mcmods-fg-secondary);
+}
+
+#switch_az a,
+#switch_py a {
+  color: var(--mcmods-fg-secondary);
+}
+
+#switch_az a:hover,
+#switch_py a:hover {
+  color: var(--mcmods-accent-blue);
+  background-color: var(--mcmods-bg-hover);
+}

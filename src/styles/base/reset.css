@@ -1,6 +1,6 @@
 /* ============================================
  * mcmods-modern — Global Reset
- * 站点全局元素重置为终端风格基准
+ * 精准锚定 MCMod 真实 DOM 选择器
  * ============================================ */
 
 /* ── 根元素 ── */
@@ -12,6 +12,7 @@ html {
   line-height: var(--mcmods-line-height-base);
   scrollbar-color: var(--mcmods-scrollbar-thumb) var(--mcmods-scrollbar-track);
   scrollbar-width: thin;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -19,8 +20,15 @@ body {
   color: var(--mcmods-fg-primary);
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── MCMod 主容器 ── */
+.main {
+  background-color: var(--mcmods-bg-primary) !important;
+}
+
+.center {
+  background-color: var(--mcmods-bg-primary);
 }
 
 /* ── 选区 ── */
@@ -29,24 +37,31 @@ body {
   color: var(--mcmods-fg-primary);
 }
 
-/* ── 链接 ── */
+/* ── 链接（覆盖 MCMod a{color:#06c}） ── */
+a,
+div, ul, li {
+  color: inherit;
+}
+
 a {
   color: var(--mcmods-accent-blue);
   text-decoration: none;
   transition: color var(--mcmods-transition-fast);
 }
 
-a:hover {
+a:visited {
   color: var(--mcmods-accent-purple);
-  text-decoration: underline;
-  text-decoration-color: var(--mcmods-accent-blue);
-  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--mcmods-fg-primary);
+  text-decoration: none;
 }
 
 /* ── 标题 ── */
 h1, h2, h3, h4, h5, h6 {
   color: var(--mcmods-fg-primary);
-  font-weight: 600;
+  font-weight: 500;
   line-height: var(--mcmods-line-height-tight);
   margin: 0;
 }
@@ -57,23 +72,15 @@ p {
   margin: 0;
 }
 
-/* ── 列表 ── */
-ul, ol {
-  color: var(--mcmods-fg-secondary);
-}
-
-li {
-  color: inherit;
-}
-
 /* ── 图片 ── */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* ── 输入框 ── */
-input,
+/* ── 输入框（覆盖 MCMod 原有样式） ── */
+input[type="text"],
+input[type="search"],
 textarea,
 select {
   background-color: var(--mcmods-bg-secondary);
@@ -81,11 +88,11 @@ select {
   border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
   font-family: var(--mcmods-font-sans);
-  font-size: var(--mcmods-font-size-base);
-  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+  font-size: var(--mcmods-font-size-sm);
+  padding: 4px 8px;
+  outline: none;
   transition: border-color var(--mcmods-transition-fast),
               box-shadow var(--mcmods-transition-fast);
-  outline: none;
 }
 
 input:focus,
@@ -100,69 +107,79 @@ textarea::placeholder {
   color: var(--mcmods-fg-muted);
 }
 
-/* ── 按钮 ── */
-button {
+/* ── 按钮基础 ── */
+button,
+input[type="button"],
+input[type="submit"] {
+  background: none;
+  color: inherit;
+  border: none;
+  border-radius: var(--mcmods-radius-md);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--mcmods-transition-fast),
+              color var(--mcmods-transition-fast),
+              box-shadow var(--mcmods-transition-fast);
+}
+
+/* ── MCMod 通用表格 ── */
+.mcmodCommonTable {
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+.mcmodCommonTable tr {
+  border-color: var(--mcmods-fg-muted);
+}
+
+.mcmodCommonTable th {
+  background-color: var(--mcmods-bg-secondary) !important;
+  color: var(--mcmods-fg-muted);
+  font-size: var(--mcmods-font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px;
+}
+
+.mcmodCommonTable td {
+  color: var(--mcmods-fg-secondary);
+  border-bottom-color: var(--mcmods-fg-muted);
+  padding: 6px;
+}
+
+.mcmodCommonTable tr:hover td {
+  background-color: var(--mcmods-bg-hover);
+}
+
+.mcmodCommonTable .tableBtn {
   background-color: var(--mcmods-bg-tertiary);
   color: var(--mcmods-fg-primary);
   border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
-  font-family: var(--mcmods-font-sans);
-  font-size: var(--mcmods-font-size-base);
-  cursor: pointer;
-  padding: var(--mcmods-space-2) var(--mcmods-space-4);
-  transition: background-color var(--mcmods-transition-fast),
-              border-color var(--mcmods-transition-fast);
 }
 
-button:hover {
-  background-color: var(--mcmods-hover-bg);
-  border-color: var(--mcmods-accent-blue);
+.mcmodCommonTable .tableBtn.blue:hover {
+  background-color: var(--mcmods-accent-blue);
+  color: #fff;
 }
 
-button:active {
-  background-color: var(--mcmods-active-bg);
-}
-
-/* ── 表格 ── */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: var(--mcmods-border-default);
-  padding: var(--mcmods-space-2) var(--mcmods-space-3);
-  color: var(--mcmods-fg-secondary);
-  text-align: left;
-}
-
-th {
-  background-color: var(--mcmods-bg-tertiary);
-  color: var(--mcmods-fg-primary);
-  font-weight: 600;
-}
-
-tr:hover td {
-  background-color: var(--mcmods-bg-hover);
-}
-
-/* ── 代码 ── */
+/* ── 代码块 ── */
 code,
 pre {
   font-family: var(--mcmods-font-mono);
   font-size: var(--mcmods-font-size-sm);
-  background-color: var(--mcmods-bg-secondary);
-  border: var(--mcmods-border-subtle);
+  background-color: var(--mcmods-bg-code);
   border-radius: var(--mcmods-radius-sm);
-}
-
-code {
-  padding: 1px 4px;
 }
 
 pre {
   padding: var(--mcmods-space-4);
   overflow-x: auto;
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
 }
 
 pre code {
@@ -176,4 +193,25 @@ hr {
   border: none;
   border-top: var(--mcmods-border-default);
   margin: var(--mcmods-space-4) 0;
+}
+
+/* ── NProgress 加载条 ── */
+#nprogress .bar {
+  background: var(--mcmods-accent-blue) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--mcmods-accent-blue), 0 0 5px var(--mcmods-accent-blue) !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--mcmods-accent-blue) !important;
+  border-left-color: var(--mcmods-accent-blue) !important;
+}
+
+/* ── MCMod 提示框 ── */
+.TipsBox {
+  background-color: var(--mcmods-bg-secondary) !important;
+  color: var(--mcmods-fg-primary) !important;
+  border-color: var(--mcmods-fg-muted) !important;
 }

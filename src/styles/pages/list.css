@@ -1,112 +1,76 @@
 /* ============================================
  * mcmods-modern — List / Category Page
- * MCMod 列表/分类页重绘
- *
- * 目标选择器（待抓取确认）：
- *   .list-page, .category-page, .search-result, .filter-bar
+ * MCMod 列表/分类页
  * ============================================ */
 
-/* ── 列表页容器 ── */
-.list-page,
-.category-page,
-[class*="list-page"],
-[class*="category-page"],
-[class*="search-result"] {
-  background-color: var(--mcmods-bg-primary);
-}
-
-/* ── 侧边栏 / 筛选器 ── */
+/* ── 侧边栏/筛选 ── */
 .sidebar,
 .filter-panel,
 [class*="sidebar"],
-[class*="filter-panel"],
-[class*="filter-bar"] {
+[class*="filter-panel"] {
   background-color: var(--mcmods-bg-secondary);
   border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
-  padding: var(--mcmods-space-4);
 }
 
 .sidebar h3,
-.filter-panel h3,
-[class*="sidebar"] h3,
-[class*="filter-panel"] h3 {
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-sm);
+.filter-panel h3 {
   color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   border-bottom: var(--mcmods-border-subtle);
-  padding-bottom: var(--mcmods-space-2);
-  margin-bottom: var(--mcmods-space-3);
 }
 
-/* ── 筛选选项 ── */
+/* ── 筛选标签 ── */
 .filter-option,
-[class*="filter-option"],
 .sidebar label,
 .filter-panel label {
-  display: flex;
-  align-items: center;
-  gap: var(--mcmods-space-2);
-  padding: var(--mcmods-space-1) 0;
   color: var(--mcmods-fg-secondary);
   font-size: var(--mcmods-font-size-sm);
-  cursor: pointer;
 }
 
 .filter-option:hover,
-.sidebar label:hover,
-.filter-panel label:hover {
+.sidebar label:hover {
   color: var(--mcmods-accent-blue);
 }
 
-/* ── 自定义复选框 ── */
 .filter-option input[type="checkbox"],
-.sidebar input[type="checkbox"],
-.filter-panel input[type="checkbox"] {
+.sidebar input[type="checkbox"] {
   accent-color: var(--mcmods-accent-blue);
 }
 
 /* ── 排序栏 ── */
 .sort-bar,
-[class*="sort-bar"],
-[class*="sort-options"] {
-  display: flex;
-  align-items: center;
-  gap: var(--mcmods-space-2);
-  padding: var(--mcmods-space-3) 0;
-  border-bottom: var(--mcmods-border-subtle);
-  margin-bottom: var(--mcmods-space-4);
+[class*="sort-bar"] {
+  border-bottom: var(--mcmods-border-default);
 }
 
 .sort-bar a,
-.sort-bar button,
-[class*="sort-bar"] a,
-[class*="sort-bar"] button {
-  padding: var(--mcmods-space-1) var(--mcmods-space-3);
-  border-radius: var(--mcmods-radius-sm);
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-xs);
+.sort-bar button {
   color: var(--mcmods-fg-secondary);
   background-color: transparent;
   border: var(--mcmods-border-default);
-  cursor: pointer;
-  transition: all var(--mcmods-transition-fast);
+  border-radius: var(--mcmods-radius-sm);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-xs);
+  font-weight: 500;
+  padding: var(--mcmods-space-1) var(--mcmods-space-2);
 }
 
 .sort-bar a:hover,
-.sort-bar button:hover,
-[class*="sort-bar"] a:hover,
-[class*="sort-bar"] button:hover {
-  color: var(--mcmods-accent-blue);
-  border-color: var(--mcmods-accent-blue);
-  background-color: var(--mcmods-hover-bg);
+.sort-bar button:hover {
+  color: var(--mcmods-fg-primary);
+  border-color: var(--mcmods-fg-muted);
+  background-color: var(--mcmods-bg-hover);
 }
 
 .sort-bar .active,
-.sort-bar [class*="active"],
-[class*="sort-bar"] .active {
+.sort-bar [class*="active"] {
   background-color: var(--mcmods-accent-blue) !important;
-  color: #ffffff !important;
+  color: #fff !important;
   border-color: var(--mcmods-accent-blue) !important;
 }
 
@@ -114,12 +78,8 @@
 .list-item,
 [class*="list-item"],
 [class*="row-item"] {
-  display: flex;
-  align-items: center;
-  gap: var(--mcmods-space-4);
   padding: var(--mcmods-space-3);
   border-bottom: var(--mcmods-border-subtle);
-  transition: background-color var(--mcmods-transition-fast);
 }
 
 .list-item:hover,
@@ -127,38 +87,21 @@
   background-color: var(--mcmods-bg-hover);
 }
 
-/* ── 列表项缩略图 ── */
 .list-item img,
 [class*="list-item"] img,
-.list-thumb,
-[class*="list-thumb"] {
-  width: 48px;
-  height: 48px;
+.list-thumb {
   border-radius: var(--mcmods-radius-sm);
   border: var(--mcmods-border-subtle);
-  background-color: var(--mcmods-bg-secondary);
-}
-
-/* ── 列表项信息 ── */
-.list-item-info,
-[class*="list-item-info"] {
-  flex: 1;
-  min-width: 0;
 }
 
 .list-item-info .name,
 [class*="list-item-info"] [class*="name"] {
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-sm);
-  font-weight: 600;
   color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-weight: 500;
 }
 
 .list-item-info .desc,
 [class*="list-item-info"] [class*="desc"] {
   color: var(--mcmods-fg-muted);
-  font-size: var(--mcmods-font-size-xs);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

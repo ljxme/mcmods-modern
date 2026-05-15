@@ -1,15 +1,13 @@
 /* ============================================
- * mcmods-modern — Terminal Scrollbar
- * 终端风格暗色细窄滚动条
+ * mcmods-modern — Scrollbar
+ * Vercel 风格暗色细窄滚动条
  * ============================================ */
 
-/* Firefox 滚动条（通过 scrollbar-width + scrollbar-color） */
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--mcmods-scrollbar-thumb) var(--mcmods-scrollbar-track);
 }
 
-/* Webkit 滚动条（Chrome / Edge / Safari） */
 ::-webkit-scrollbar {
   width: var(--mcmods-scrollbar-width);
   height: var(--mcmods-scrollbar-width);
@@ -17,7 +15,6 @@ html {
 
 ::-webkit-scrollbar-track {
   background: var(--mcmods-scrollbar-track);
-  border-radius: var(--mcmods-radius-sm);
 }
 
 ::-webkit-scrollbar-thumb {

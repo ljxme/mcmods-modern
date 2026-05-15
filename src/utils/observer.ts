@@ -111,6 +111,62 @@ export function injectStyle(cssText: string, id?: string): HTMLStyleElement {
 }
 
 /**
+ * 等待指定选择器的元素出现在 DOM 中
+ * 基于 requestIdleCallback + 指数退避重试
+ * 借鉴 BewlyBewly 的 executeTimes 模式
+ *
+ * @param selector   CSS 选择器
+ * @param callback   元素就绪后的回调
+ * @param maxRetries 最大重试次数，默认 10
+ * @returns          清理函数（停止轮询）
+ */
+export function onReady(
+  selector: string,
+  callback: (el: Element) => void,
+  maxRetries = 10,
+): () => void {
+  let attempts = 0;
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  let stopped = false;
+
+  function tryFind(): void {
+    if (stopped) return;
+
+    const el = document.querySelector(selector);
+    if (el) {
+      callback(el);
+      return;
+    }
+
+    attempts++;
+    if (attempts >= maxRetries) return;
+
+    // 指数退避：100ms → 200ms → 400ms → ... → 最大 5s
+    const delay = Math.min(100 * 2 ** attempts, 5000);
+    const runner = () => { timer = setTimeout(tryFind, delay); };
+
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(runner, { timeout: delay + 50 });
+    } else {
+      runner();
+    }
+  }
+
+  // 首次立即尝试
+  const runner = () => { timer = setTimeout(tryFind, 0); };
+  if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(runner);
+  } else {
+    runner();
+  }
+
+  return () => {
+    stopped = true;
+    if (timer) clearTimeout(timer);
+  };
+}
+
+/**
  * 注入 CLI 终端装饰到页面顶部
  * 样式：伪终端提示符 `> mcmod.modern loaded`
  */
@@ -126,23 +182,23 @@ export function injectCLIDecoration(): void {
     bottom: 12px;
     right: 12px;
     z-index: 99999;
-    background: #0d1117;
-    color: #3fb950;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-    font-size: 11px;
+    background: #111;
+    color: #a1a1aa;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
     padding: 4px 12px;
-    border-radius: 4px;
-    border: 1px solid #30363d;
-    opacity: 0.7;
+    border-radius: 6px;
+    border: 1px solid #27272a;
+    opacity: 0.6;
     pointer-events: none;
     user-select: none;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
   `;
 
   // prompt 符号特殊样式
   const prompt = el.querySelector('.mcmods-prompt') as HTMLElement;
   if (prompt) {
-    prompt.style.cssText = 'color: #58a6ff; margin-right: 6px;';
+    prompt.style.cssText = 'color: #0070f3; margin-right: 6px;';
   }
 
   document.body.appendChild(el);

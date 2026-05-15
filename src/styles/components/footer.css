@@ -1,0 +1,87 @@
+/* ============================================
+ * mcmods-modern — Footer
+ * MCMod 真实目标：.under / .un_links / .un_info
+ * ============================================ */
+
+/* ── 底部分割区 ── */
+.under {
+  background-color: var(--mcmods-bg-secondary) !important;
+  border-top: var(--mcmods-border-default);
+}
+
+/* ── 友情链接 ── */
+.un_links {
+  background-color: var(--mcmods-bg-primary) !important;
+  border-top: var(--mcmods-border-default);
+}
+
+.un_links .block {
+  border-top-color: var(--mcmods-fg-muted);
+}
+
+.un_links li {
+  border-color: var(--mcmods-fg-muted);
+}
+
+.un_links li img {
+  opacity: 0.6;
+  transition: opacity var(--mcmods-transition-fast);
+}
+
+.un_links li img:hover {
+  opacity: 1;
+}
+
+/* ── 信息区 ── */
+.un_info {
+  color: var(--mcmods-fg-secondary);
+}
+
+.un_info li strong {
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-weight: 500;
+}
+
+.un_info li a {
+  color: var(--mcmods-fg-muted);
+  font-size: var(--mcmods-font-size-sm);
+  text-decoration: none;
+  transition: color var(--mcmods-transition-fast);
+}
+
+.un_info li a:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+.un_info p,
+.un_info span {
+  color: var(--mcmods-fg-muted);
+}
+
+/* ── 版权 ── */
+.copyright {
+  color: var(--mcmods-fg-muted);
+}
+
+.copyleft {
+  color: var(--mcmods-fg-muted);
+}
+
+.copyleft a {
+  color: var(--mcmods-fg-muted);
+}
+
+.copyleft a:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+/* ── 服务时间 ── */
+#showsectime {
+  color: var(--mcmods-fg-muted);
+}
+
+#ServerTime,
+#ClientTime {
+  color: var(--mcmods-fg-muted);
+}

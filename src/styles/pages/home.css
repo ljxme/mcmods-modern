@@ -1,154 +1,225 @@
 /* ============================================
  * mcmods-modern — Home Page
- * MCMod 首页 (https://www.mcmod.cn/) 完整重绘
- *
- * 目标选择器（待抓取确认）：
- *   .index-content, .home-banner, .mod-list, .news-section
+ * MCMod 真实目标：.post_frame / .topic_block / .addArea / .editor
  * ============================================ */
 
-/* ── 首页容器 ── */
-.home-container,
-.index-content,
-[class*="home"],
-[class*="index-content"],
-main[class*="index"] {
-  background-color: var(--mcmods-bg-primary);
+/* ── 教程区 ── */
+.post_frame {
+  background-color: transparent;
 }
 
-/* ── 首页横幅 / Hero ── */
-.hero,
-.banner,
-[class*="hero"],
-[class*="banner"],
-[class*="carousel"] {
-  background-color: var(--mcmods-bg-secondary) !important;
-  border-bottom: var(--mcmods-border-default);
-  padding: var(--mcmods-space-5) 0;
+.post_block {
+  background-color: var(--mcmods-bg-tertiary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-lg);
+  padding: var(--mcmods-space-3);
 }
 
-.hero h1,
-.banner h1,
-[class*="hero"] h1 {
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-2xl);
-  color: var(--mcmods-accent-green);
+.post_block .title {
+  background-color: transparent;
+  border-bottom: var(--mcmods-border-subtle);
+  padding-bottom: var(--mcmods-space-2);
+  margin-bottom: var(--mcmods-space-3);
 }
 
-.hero p,
-.banner p,
-[class*="hero"] p {
-  color: var(--mcmods-fg-secondary);
-  font-size: var(--mcmods-font-size-base);
-}
-
-/* ── 模组网格 / 列表 ── */
-.mod-grid,
-.item-grid,
-[class*="mod-grid"],
-[class*="item-grid"],
-[class*="mod-list"] {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--mcmods-space-4);
-  padding: var(--mcmods-space-4) 0;
-}
-
-/* ── 模组卡片（首页特有覆盖） ── */
-.mod-grid .card,
-.item-grid .card,
-[class*="mod-grid"] [class*="card"],
-[class*="item-grid"] [class*="card"] {
-  transition: transform var(--mcmods-transition-base),
-              border-color var(--mcmods-transition-base),
-              box-shadow var(--mcmods-transition-base);
-}
-
-.mod-grid .card:hover,
-.item-grid .card:hover {
-  transform: translateY(-2px);
-}
-
-/* ── 模组名称 ── */
-.mod-name,
-.item-name,
-[class*="mod-name"],
-[class*="item-name"] {
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-base);
-  font-weight: 600;
+.post_block .title .icon {
   color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-lg);
+  font-weight: 500;
 }
 
-/* ── 模组分类标签 ── */
-.mod-tag,
-.item-tag,
-[class*="mod-tag"],
-[class*="item-tag"],
-.tag,
-[class*="tag"] {
-  display: inline-block;
-  background-color: var(--mcmods-bg-secondary);
-  color: var(--mcmods-accent-purple);
-  border: var(--mcmods-border-subtle);
-  border-radius: var(--mcmods-radius-sm);
+.post_block .title .text {
+  color: var(--mcmods-fg-muted);
   font-family: var(--mcmods-font-mono);
   font-size: var(--mcmods-font-size-xs);
-  padding: 1px 6px;
-  margin: 2px;
 }
 
-/* ── 信息栏（下载量/评分/版本等） ── */
-.mod-meta,
-.item-meta,
-[class*="mod-meta"],
-[class*="item-meta"] {
+.post_block .title .more a {
   color: var(--mcmods-fg-muted);
   font-size: var(--mcmods-font-size-xs);
-  display: flex;
-  gap: var(--mcmods-space-3);
-  flex-wrap: wrap;
 }
 
-/* ── 分页 ── */
-.pagination,
-[class*="pagination"],
-[class*="page-nav"] {
-  display: flex;
-  justify-content: center;
-  gap: var(--mcmods-space-1);
-  padding: var(--mcmods-space-5) 0;
-}
-
-.pagination a,
-.pagination span,
-[class*="pagination"] a,
-[class*="pagination"] span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  background-color: var(--mcmods-bg-tertiary);
-  color: var(--mcmods-fg-secondary);
-  border: var(--mcmods-border-default);
-  border-radius: var(--mcmods-radius-sm);
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-sm);
-  text-decoration: none;
-  transition: all var(--mcmods-transition-fast);
-}
-
-.pagination a:hover,
-[class*="pagination"] a:hover {
-  background-color: var(--mcmods-hover-bg);
-  border-color: var(--mcmods-accent-blue);
+.post_block .title .more a:hover {
   color: var(--mcmods-accent-blue);
 }
 
-.pagination .active,
-[class*="pagination"] .active,
-[class*="pagination"] .current {
-  background-color: var(--mcmods-accent-blue) !important;
-  color: #ffffff !important;
-  border-color: var(--mcmods-accent-blue) !important;
+/* ── 教程条目 ── */
+.post_block .list li {
+  padding: var(--mcmods-space-2) 0;
+  border-bottom: var(--mcmods-border-subtle);
+}
+
+.postTitle a {
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 500;
+}
+
+.postTitle a:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+.score {
+  color: var(--mcmods-accent-green);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+.postText {
+  color: var(--mcmods-fg-muted);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+.mainMod a {
+  color: var(--mcmods-fg-secondary);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+.mainMod a:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+/* ── 社群动态区 ── */
+.topic_block {
+  background-color: var(--mcmods-bg-tertiary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-lg);
+  padding: var(--mcmods-space-3);
+}
+
+.topic_block .title {
+  border-bottom: var(--mcmods-border-subtle);
+  padding-bottom: var(--mcmods-space-2);
+  margin-bottom: var(--mcmods-space-3);
+}
+
+.topic_block .title .icon {
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-lg);
+  font-weight: 500;
+}
+
+.topic_block .title .text li {
+  color: var(--mcmods-fg-secondary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  cursor: pointer;
+  padding: var(--mcmods-space-1) var(--mcmods-space-2);
+  border-radius: var(--mcmods-radius-sm);
+  transition: color var(--mcmods-transition-fast),
+              background-color var(--mcmods-transition-fast);
+}
+
+.topic_block .title .text li:hover {
+  color: var(--mcmods-fg-primary);
+  background-color: var(--mcmods-bg-hover);
+}
+
+.topic_block .title .text li.on {
+  color: var(--mcmods-accent-blue);
+}
+
+/* ── 社群帖子条目 ── */
+.topic_block .item {
+  padding: var(--mcmods-space-2) 0;
+  border-bottom: var(--mcmods-border-subtle);
+}
+
+.topic_block .item:hover {
+  background-color: var(--mcmods-bg-hover);
+}
+
+.topic_block .dec a:first-child {
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-sm);
+  font-weight: 500;
+}
+
+.topic_block .dec a:first-child:hover {
+  color: var(--mcmods-accent-blue);
+}
+
+.topic_block .dec .un {
+  color: var(--mcmods-accent-blue);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+.topic_block .dec i {
+  color: var(--mcmods-fg-muted);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+/* ── 用户头像 ── */
+.topic_block .item a img {
+  border-radius: 50%;
+  border: var(--mcmods-border-subtle);
+}
+
+/* ── 右侧栏 ── */
+.right {
+  background-color: transparent;
+}
+
+.addArea {
+  background-color: var(--mcmods-bg-secondary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
+  padding: var(--mcmods-space-3);
+}
+
+.count {
+  color: var(--mcmods-fg-muted);
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-xs);
+  padding: var(--mcmods-space-3);
+}
+
+.count span {
+  color: var(--mcmods-accent-green);
+  font-family: var(--mcmods-font-mono);
+  font-weight: 500;
+}
+
+/* ── 编辑动态 ── */
+.editor {
+  color: var(--mcmods-fg-secondary);
+  font-size: var(--mcmods-font-size-xs);
+}
+
+.editor a {
+  color: var(--mcmods-accent-blue);
+}
+
+.editor a:hover {
+  color: var(--mcmods-fg-primary);
+}
+
+/* ── 图表区 ── */
+.chart_block {
+  background-color: var(--mcmods-bg-tertiary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
+}
+
+/* ── 模组分类区 ── */
+.class_block {
+  background-color: transparent;
+}
+
+.class_block .title {
+  color: var(--mcmods-fg-primary);
+  font-weight: 500;
+}
+
+/* ── 视频区 ── */
+.video_block {
+  background-color: var(--mcmods-bg-tertiary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
 }

@@ -1,87 +1,113 @@
 /* ============================================
  * mcmods-modern — Navbar
- * 顶部导航栏 → 终端风格重绘
- *
- * MCMod 目标选择器（待确认后调整）：
- *   .navbar, header, .header, .nav, #nav
+ * MCMod 真实目标：.top-main / .frame / .logo / .def-nav
  * ============================================ */
 
 /* ── 导航容器 ── */
-header,
-.navbar,
-.header-wrapper,
-[class*="navbar"],
-[id*="navbar"] {
-  background-color: var(--mcmods-bg-secondary) !important;
+.top-main {
+  background-color: var(--mcmods-bg-primary) !important;
   border-bottom: var(--mcmods-border-default) !important;
-  box-shadow: none;
-  padding-top: 0;
-  padding-bottom: 0;
+}
+
+.top-main .frame {
+  background-color: transparent;
+}
+
+/* ── Logo ── */
+.top-main .logo {
+  color: var(--mcmods-fg-primary) !important;
+  font-family: var(--mcmods-font-sans);
+  font-weight: 500;
 }
 
 /* ── 导航链接 ── */
-header a,
-.navbar a,
-.header-wrapper a {
+.navs a,
+.def-nav {
   color: var(--mcmods-fg-secondary) !important;
-  font-family: var(--mcmods-font-mono);
+  font-family: var(--mcmods-font-sans);
   font-size: var(--mcmods-font-size-sm);
+  font-weight: 500;
   text-decoration: none;
   transition: color var(--mcmods-transition-fast),
               background-color var(--mcmods-transition-fast);
-  padding: var(--mcmods-space-2) var(--mcmods-space-3);
-  border-radius: var(--mcmods-radius-sm);
-}
-
-header a:hover,
-.navbar a:hover,
-.header-wrapper a:hover {
-  color: var(--mcmods-accent-blue) !important;
-  background-color: var(--mcmods-hover-bg);
-  text-decoration: none;
-}
-
-/* ── Logo / 品牌 ── */
-header .logo,
-.navbar .logo,
-.header-wrapper .logo,
-header [class*="logo"],
-.navbar [class*="logo"] {
-  color: var(--mcmods-accent-green) !important;
-  font-family: var(--mcmods-font-mono);
-  font-weight: 700;
-  font-size: var(--mcmods-font-size-lg);
-}
-
-/* ── 导航激活项 ── */
-header .active,
-.navbar .active,
-.header-wrapper .active,
-header [class*="active"],
-.navbar [class*="active"] {
-  color: var(--mcmods-fg-primary) !important;
-  background-color: var(--mcmods-active-bg);
-  border-bottom: 2px solid var(--mcmods-accent-blue);
-}
-
-/* ── 搜索框（导航栏内嵌） ── */
-header input[type="text"],
-header input[type="search"],
-.navbar input[type="text"],
-.navbar input[type="search"] {
-  background-color: var(--mcmods-bg-primary);
-  border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
-  color: var(--mcmods-fg-primary);
-  font-family: var(--mcmods-font-sans);
-  font-size: var(--mcmods-font-size-sm);
-  padding: var(--mcmods-space-1) var(--mcmods-space-3);
 }
 
-header input[type="text"]:focus,
-header input[type="search"]:focus,
-.navbar input[type="text"]:focus,
-.navbar input[type="search"]:focus {
-  border-color: var(--mcmods-accent-blue);
-  box-shadow: var(--mcmods-shadow-glow);
+.navs a:hover,
+.def-nav:hover {
+  color: var(--mcmods-fg-primary) !important;
+  background-color: var(--mcmods-bg-hover);
+}
+
+/* ── 激活项 ── */
+.def-nav.on,
+.def-nav.current {
+  color: var(--mcmods-fg-primary) !important;
+}
+
+/* ── 下拉菜单 ── */
+.pulldown,
+.app-url {
+  background-color: var(--mcmods-bg-secondary) !important;
+  border: var(--mcmods-border-default) !important;
+  border-radius: var(--mcmods-radius-md);
+}
+
+.app-url .li .text {
+  color: var(--mcmods-fg-secondary);
+}
+
+.app-url .li:hover .text {
+  color: var(--mcmods-fg-primary);
+}
+
+/* ── 导航搜索框（终端 prompt 风格） ── */
+.search_box form {
+  background-color: var(--mcmods-terminal-bg);
+  border: 1px solid var(--mcmods-terminal-border);
+  border-radius: var(--mcmods-radius-md);
+}
+
+.search_box input[type="text"] {
+  background-color: transparent;
+  color: var(--mcmods-fg-primary);
+  border: none;
+  font-family: var(--mcmods-font-mono);
+  font-size: var(--mcmods-font-size-xs);
+  padding: 4px 8px;
+}
+
+.search_box input[type="text"]::placeholder {
+  color: var(--mcmods-fg-muted);
+}
+
+.search_box input[type="submit"] {
+  background-color: var(--mcmods-accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: 0 var(--mcmods-radius-sm) var(--mcmods-radius-sm) 0;
+  font-family: var(--mcmods-font-sans);
+  font-size: var(--mcmods-font-size-xs);
+  padding: 4px 12px;
+}
+
+.search_box input[type="submit"]:hover {
+  background-color: #4090e0;
+}
+
+/* ── 用户信息区 ── */
+.info {
+  color: var(--mcmods-fg-secondary);
+}
+
+.info a {
+  color: var(--mcmods-fg-secondary);
+}
+
+.info a:hover {
+  color: var(--mcmods-fg-primary);
+}
+
+.search_btn {
+  filter: invert(0.8);
 }

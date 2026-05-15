@@ -1,79 +1,58 @@
 /* ============================================
  * mcmods-modern — Tables
- * 表格 / 数据区 → 暗色终端风格
- *
- * MCMod 目标选择器（待确认后调整）：
- *   table, .table, .data-table, [class*="table"]
+ * MCMod 真实目标：.mcmodCommonTable
  * ============================================ */
 
-/* ── 表格容器 ── */
-.table-wrapper,
-.table-container,
-[class*="table-wrap"] {
-  overflow-x: auto;
+.mcmodCommonTable {
+  background-color: var(--mcmods-bg-tertiary);
   border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
+  overflow: hidden;
 }
 
-/* ── 表格基础 ── */
-table,
-.table,
-[class*="table"]:not([class*="button"]) {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--mcmods-bg-tertiary);
-  color: var(--mcmods-fg-secondary);
-  font-size: var(--mcmods-font-size-sm);
-}
-
-/* ── 表头 ── */
-thead {
-  border-bottom: 2px solid var(--mcmods-accent-blue);
-}
-
-th {
+.mcmodCommonTable th {
   background-color: var(--mcmods-bg-secondary) !important;
-  color: var(--mcmods-fg-primary) !important;
-  font-family: var(--mcmods-font-mono);
+  color: var(--mcmods-fg-muted) !important;
+  font-family: var(--mcmods-font-sans);
   font-size: var(--mcmods-font-size-xs);
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   padding: var(--mcmods-space-2) var(--mcmods-space-3);
-  border: none !important;
-  border-bottom: 1px solid var(--mcmods-accent-blue) !important;
+  border-bottom: var(--mcmods-border-default);
 }
 
-/* ── 单元格 ── */
-td {
+.mcmodCommonTable td {
   padding: var(--mcmods-space-2) var(--mcmods-space-3);
-  border-bottom: var(--mcmods-border-subtle);
   color: var(--mcmods-fg-secondary);
+  border-bottom: var(--mcmods-border-subtle);
 }
 
-tr:last-child td {
+.mcmodCommonTable tr:last-child td {
   border-bottom: none;
 }
 
-/* ── 行悬停 ── */
-tbody tr:hover td {
+.mcmodCommonTable tr:hover td {
   background-color: var(--mcmods-bg-hover);
 }
 
-/* ── 表格内链接 ── */
-td a {
-  color: var(--mcmods-accent-blue);
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-xs);
-}
-
-td a:hover {
-  color: var(--mcmods-accent-purple);
-}
-
-/* ── 斑马条纹（可选） ── */
-/*
-tbody tr:nth-child(even) td {
+.mcmodCommonTable .tableBtn {
   background-color: var(--mcmods-bg-secondary);
+  color: var(--mcmods-fg-primary);
+  border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-sm);
+  padding: var(--mcmods-space-1) var(--mcmods-space-3);
+  cursor: pointer;
+  transition: all var(--mcmods-transition-fast);
 }
-*/
+
+.mcmodCommonTable .tableBtn:hover {
+  background-color: var(--mcmods-bg-hover);
+  border-color: var(--mcmods-accent-blue);
+}
+
+.mcmodCommonTable .tableBtn.blue:hover {
+  background-color: var(--mcmods-accent-blue);
+  color: #fff;
+  border-color: var(--mcmods-accent-blue);
+}

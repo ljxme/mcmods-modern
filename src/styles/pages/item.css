@@ -1,159 +1,104 @@
 /* ============================================
  * mcmods-modern — Item / Detail Page
- * MCMod 物品/模组详情页重绘
- *
- * 目标选择器（待抓取确认）：
- *   .item-detail, .mod-detail, .item-content, .mod-content
+ * MCMod 物品/模组详情页
  * ============================================ */
 
-/* ── 详情页容器 ── */
+/* ── 详情容器 ── */
 .item-detail,
 .mod-detail,
 [class*="item-detail"],
-[class*="mod-detail"],
-[class*="detail-page"] {
+[class*="mod-detail"] {
   background-color: var(--mcmods-bg-primary);
-  padding: var(--mcmods-space-5) 0;
+  color: var(--mcmods-fg-secondary);
 }
 
-/* ── 头部信息区 ── */
+/* ── 头信息区 ── */
 .item-header,
-.mod-header,
-[class*="item-header"],
-[class*="mod-header"] {
-  display: flex;
-  gap: var(--mcmods-space-5);
-  align-items: flex-start;
-  padding-bottom: var(--mcmods-space-5);
-  border-bottom: var(--mcmods-border-subtle);
-  margin-bottom: var(--mcmods-space-5);
+.mod-header {
+  border-bottom: var(--mcmods-border-default);
 }
 
-/* ── 图标/封面 ── */
-.item-icon,
-.mod-icon,
-[class*="item-icon"],
-[class*="mod-icon"],
+.item-header h1,
+.mod-header h1,
+[class*="item-name"],
+[class*="mod-name"] {
+  color: var(--mcmods-fg-primary);
+  font-family: var(--mcmods-font-sans);
+  font-weight: 500;
+}
+
 .item-header img,
 .mod-header img {
-  width: 96px;
-  height: 96px;
-  border-radius: var(--mcmods-radius-md);
   border: var(--mcmods-border-default);
+  border-radius: var(--mcmods-radius-md);
   background-color: var(--mcmods-bg-secondary);
-  object-fit: cover;
 }
 
-/* ── 名称 ── */
-.item-title,
-.mod-title,
-[class*="item-name"],
-[class*="mod-name"] h1,
-.item-header h1,
-.mod-header h1 {
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-2xl);
-  font-weight: 700;
-  color: var(--mcmods-fg-primary);
-  margin-bottom: var(--mcmods-space-2);
-}
-
-/* ── 英文名 / ID ── */
-.item-subtitle,
-.mod-subtitle,
+/* ── 英文名 ── */
 [class*="item-eng"],
 [class*="mod-eng"],
-.item-header .subtitle,
-.mod-header .subtitle {
+.enname {
+  color: var(--mcmods-fg-muted);
   font-family: var(--mcmods-font-mono);
   font-size: var(--mcmods-font-size-sm);
-  color: var(--mcmods-fg-muted);
-  margin-bottom: var(--mcmods-space-3);
 }
 
-/* ── 属性列表 ── */
-.item-attributes,
-.mod-attributes,
+/* ── 属性表 ── */
+[class*="info-table"],
 [class*="item-attr"],
-[class*="mod-attr"],
-[class*="info-table"] {
-  background-color: var(--mcmods-bg-tertiary);
+[class*="mod-attr"] {
+  background-color: var(--mcmods-bg-secondary);
   border: var(--mcmods-border-default);
   border-radius: var(--mcmods-radius-md);
-  overflow: hidden;
 }
 
-.item-attributes dt,
-.mod-attributes dt,
-[class*="info-table"] dt {
-  background-color: var(--mcmods-bg-secondary);
-  color: var(--mcmods-fg-primary);
-  font-family: var(--mcmods-font-mono);
+[class*="info-table"] dt,
+[class*="item-attr"] dt {
+  background-color: var(--mcmods-bg-tertiary);
+  color: var(--mcmods-fg-muted);
+  font-family: var(--mcmods-font-sans);
   font-size: var(--mcmods-font-size-xs);
-  font-weight: 600;
-  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   border-bottom: var(--mcmods-border-subtle);
 }
 
-.item-attributes dd,
-.mod-attributes dd,
-[class*="info-table"] dd {
-  padding: var(--mcmods-space-2) var(--mcmods-space-3);
+[class*="info-table"] dd,
+[class*="item-attr"] dd {
   color: var(--mcmods-fg-secondary);
-  font-size: var(--mcmods-font-size-sm);
   border-bottom: var(--mcmods-border-subtle);
 }
 
-.item-attributes dd:last-child,
-.mod-attributes dd:last-child {
-  border-bottom: none;
-}
-
-/* ── 描述区域 ── */
-.item-description,
-.mod-description,
+/* ── 描述 ── */
 [class*="item-desc"],
 [class*="mod-desc"],
 [class*="description"] {
   color: var(--mcmods-fg-secondary);
-  font-size: var(--mcmods-font-size-base);
   line-height: var(--mcmods-line-height-base);
-  margin: var(--mcmods-space-5) 0;
 }
 
 /* ── 评论区 ── */
-.comment-section,
-[class*="comment-section"],
-[class*="comment-area"] {
-  border-top: var(--mcmods-border-subtle);
-  padding-top: var(--mcmods-space-5);
-  margin-top: var(--mcmods-space-5);
+[class*="comment-section"] {
+  border-top: var(--mcmods-border-default);
 }
 
-.comment-item,
 [class*="comment-item"],
 [class*="comment"] {
-  padding: var(--mcmods-space-3) 0;
   border-bottom: var(--mcmods-border-subtle);
 }
 
-.comment-author,
 [class*="comment-author"] {
   color: var(--mcmods-accent-blue);
-  font-family: var(--mcmods-font-mono);
-  font-size: var(--mcmods-font-size-sm);
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.comment-time,
 [class*="comment-time"] {
   color: var(--mcmods-fg-muted);
+  font-family: var(--mcmods-font-mono);
   font-size: var(--mcmods-font-size-xs);
 }
 
-.comment-text,
 [class*="comment-text"] {
   color: var(--mcmods-fg-secondary);
-  font-size: var(--mcmods-font-size-sm);
-  margin-top: var(--mcmods-space-1);
 }
