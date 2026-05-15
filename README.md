@@ -1,145 +1,91 @@
 # mcmods-modern
 
-> MCMod (MC百科) 网站美化 Firefox 扩展 · Claude Code 硬核编码科技风格
+A Firefox browser extension that restyles [MCMod (MC百科)](https://www.mcmod.cn/) into a dark, terminal/CLI-inspired interface.
 
-<p align="center">
-  <img src="public/icons/icon.svg" width="128" alt="mcmods-modern">
-</p>
+<img src="public/icons/icon.svg" alt="" width="128" align="right">
 
-<p align="center">
-  <strong>将 MCMod 整站外观重绘为终端/CLI 风格的暗色编码界面</strong>
-</p>
+## Overview
 
-<p align="center">
-  <sub>🤖 本项目由 <strong>DeepSeek-V4</strong> AI 辅助开发 · <em>AI-native project</em></sub>
-</p>
+- Dark terminal background `#1a1b26` with high-contrast `#c9d1d9` body text
+- Monospace font (`JetBrains Mono`) for navigation, code, and data
+- Card / modal pseudo-terminal decorations (`● ● ●` title bar)
+- Thin dark scrollbar matching the terminal aesthetic
+- Injects a small `> mcmod.modern loaded` badge in the bottom-right corner
 
----
+## Install
 
-## 效果预览
-
-![风格](https://img.shields.io/badge/Theme-Dark%20Terminal-%231a1b26?style=flat&labelColor=30363d)
-![色彩](https://img.shields.io/badge/Palette-Tokyo%20Night%20Dark-%2358a6ff?style=flat&labelColor=1a1b26)
-![字体](https://img.shields.io/badge/Font-JetBrains%20Mono-%233fb950?style=flat&labelColor=1a1b26)
-
-- 🌑 **终端黑底色** `#1a1b26` · 高对比度正文 `#c9d1d9`
-- 🔵 **电光蓝** 链接/主操作 · 🟣 **冷紫** 高亮 · 🟢 **终端绿** 强调
-- ⌨️ 等宽字体 (`JetBrains Mono`) 用于代码/导航/数据
-- 🪟 卡片/弹窗伪终端窗口风格 (`● ● ●` 标题栏装饰)
-- 📜 暗色细窄滚动条
-- 💬 右下角 `> mcmod.modern loaded` CLI 装饰
-
-## 安装
-
-### 开发版（临时加载）
+### Development build (temporary add-on)
 
 ```bash
-# 1. 构建
 npm run build:firefox
-
-# 2. Firefox 地址栏 → about:debugging → 此 Firefox → 临时载入附加组件
-# 3. 选择 dist\firefox-mv2\manifest.json
+# Firefox → about:debugging → This Firefox → Load Temporary Add-on
+# Select dist/firefox-mv2/manifest.json
 ```
 
-### 开发模式（热更新）
+### Development mode (live reload)
 
 ```bash
 npm run dev:firefox
 ```
 
-### 正式安装
+### Production
 
-将 `dist/firefox-mv2/` 打包为 `.zip`，提交至 [Firefox Add-ons (AMO)](https://addons.mozilla.org/) 审核后公开发布。
+Package `dist/firefox-mv2/` as `.zip` and submit to [Firefox Add-ons (AMO)](https://addons.mozilla.org/) for review.
 
-## 技术栈
+## Stack
 
-| 层面 | 技术 |
-|------|------|
-| 扩展框架 | [WXT](https://wxt.dev/) (Web eXtension Tools) |
-| 语言 | TypeScript + CSS |
-| 构建 | Vite (WXT 内置) |
-| 样式架构 | CSS Custom Properties (`--mcmods-*` 命名空间) |
-| 目标平台 | Firefox Manifest V3 |
-| 目标站点 | `https://www.mcmod.cn/` |
-| 包管理 | npm |
-| AI 开发 | [DeepSeek-V4](https://deepseek.com/) |
+| Layer | Technology |
+|-------|-----------|
+| Framework | [WXT](https://wxt.dev/) (Web eXtension Tools) |
+| Language | TypeScript + CSS |
+| Build | Vite (via WXT) |
+| Style Architecture | CSS Custom Properties (`--mcmods-*` namespace) |
+| Target Platform | Firefox Manifest V3 |
+| Target Site | `https://www.mcmod.cn/` |
+| Package Manager | npm |
 
-## 目录结构
+## Structure
 
 ```
 mcmods-modern/
 ├── src/
-│   ├── entrypoints/        # WXT 入口
-│   │   ├── content.ts      # Content Script (样式注入 + CLI 装饰)
-│   │   └── background.ts   # Service Worker (设置存储)
+│   ├── entrypoints/
+│   │   ├── content.ts        # Content script (style injection + CLI badge)
+│   │   └── background.ts     # Service worker (settings, messaging)
 │   ├── styles/
-│   │   ├── base/           # 基础层
-│   │   │   ├── variables.css   # 设计 Token
-│   │   │   ├── reset.css       # 全局重置
-│   │   │   └── scrollbar.css   # 终端滚动条
-│   │   ├── components/     # 组件层
-│   │   │   ├── navbar.css      # 导航栏
-│   │   │   ├── cards.css       # 卡片/面板
-│   │   │   ├── buttons.css     # 按钮
-│   │   │   ├── tables.css      # 表格
-│   │   │   ├── modals.css      # 弹窗
-│   │   │   └── search.css      # 搜索框
-│   │   └── pages/          # 页面层
-│   │       ├── home.css        # 首页
-│   │       ├── item.css        # 详情页
-│   │       └── list.css        # 列表页
+│   │   ├── base/             # Design tokens, reset, scrollbar
+│   │   │   └── variables.css # CSS custom properties
+│   │   ├── components/       # Navbar, cards, buttons, tables, modals, search
+│   │   └── pages/            # Home, item detail, list/category
 │   └── utils/
-│       └── observer.ts     # MutationObserver 封装
+│       └── observer.ts       # MutationObserver wrapper
 ├── public/icons/
-│   └── icon.svg            # 终端风格扩展图标
+│   └── icon.svg              # Extension icon
 ├── wxt.config.ts
 ├── package.json
-├── tsconfig.json
-└── README.md
+└── tsconfig.json
 ```
 
-## 命令
+## Commands
 
-```bash
-npm run dev              # 开发模式（Chrome 默认）
-npm run dev:firefox      # 开发模式（Firefox）
-npm run build            # 生产构建（Chrome）
-npm run build:firefox    # 生产构建（Firefox）
-npm run zip:firefox      # 打包 .zip（提交 AMO）
-npm run lint             # ESLint 检查
-npm run typecheck        # TypeScript 类型检查
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Dev mode (Chrome) |
+| `npm run dev:firefox` | Dev mode (Firefox) |
+| `npm run build` | Production build (Chrome) |
+| `npm run build:firefox` | Production build (Firefox) |
+| `npm run zip:firefox` | Package .zip (AMO submission) |
+| `npm run lint` | ESLint check |
+| `npm run typecheck` | TypeScript type check |
 
-## 设计规范
+## Design Principles
 
-完整设计语言参见 [AGENTS.md](./AGENTS.md)，核心要点：
+- CSS-only overrides — no DOM structure changes
+- WCAG AA compliance (body contrast >= 4.5:1)
+- Zero runtime framework, no third-party JS dependencies
+- Namespaced: CSS classes with `mcmods-`, DOM ids with `__mcmods-`
+- `!important` only on critical visual properties (color, background, border)
 
-- **克制** — 纯 CSS 覆盖为主，不改动 DOM 结构
-- **可读性** — 正文对比度 ≥ 4.5:1 (WCAG AA)
-- **性能** — 零运行时框架，无第三方依赖
-- **命名空间** — CSS 类名前缀 `mcmods-`，DOM id 前缀 `__mcmods-`
-
-## 开发
-
-```bash
-git clone <repo>
-cd mcmods-modern
-npm install
-npm run dev:firefox
-```
-
-新站点适配流程：
-1. 在目标站点分析页面 DOM，确定选择器
-2. 在 `src/styles/` 对应层级编写 CSS 覆盖
-3. 在 `content.ts` 中 `import` 新样式
-4. 构建 → Firefox 加载 → 验证
-
-## 许可
+## License
 
 MIT
-
----
-
-<p align="center">
-  <sub>Built with 🤖 <strong>DeepSeek-V4</strong> AI · 2026</sub>
-</p>
